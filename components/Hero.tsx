@@ -93,7 +93,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-between bg-stone-950 text-sand overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-between bg-stone-950 text-sand overflow-hidden pt-20"
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,45,120,0.08),transparent_70%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,240,255,0.05),transparent_70%)] pointer-events-none" />
