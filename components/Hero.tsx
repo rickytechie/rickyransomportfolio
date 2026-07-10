@@ -132,15 +132,13 @@ export default function Hero() {
             className="max-w-2xl mt-8"
           >
             <p className="text-lg md:text-xl text-concrete-dark leading-relaxed mb-4">
-              I build ventures where culture meets functional code.
-              From zero to revenue — the{' '}
-              <span className="text-accent-alt font-semibold tracking-tight">&ldquo;Road to $1M&rdquo;</span>{' '}
-              is a mindset, not a milestone.
+              Bridging the gap between creativity, community, and code. As a full-stack tech architect
+              and success consultant, I empower teams, startups, and entrepreneurs to reach their next
+              level of peak performance.
             </p>
             <p className="text-base text-concrete-dark/70 leading-relaxed mb-12">
-              Full-stack architect, agency founder, and speaker who turns complex systems into
-              scalable, high-conversion products. Battle-tested across startups, marketplaces, and
-              high-traffic platforms.
+              Through a curated medley of systems, AI-driven architectures, and high-impact resources,
+              I help the next generation of thinkers and doers build, scale, and sustain success.
             </p>
           </motion.div>
 

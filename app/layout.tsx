@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Ricky Ransom | Full-Stack Developer & Entrepreneur",
   description:
-    "Multi-disciplinary entrepreneur, Full-Stack Developer, and Keynote Speaker. Building ventures on the Road to $1M — where culture meets functional code.",
+    "Multi-disciplinary entrepreneur, Full-Stack Developer, and Keynote Speaker. Building ventures on the Road to Success — where culture meets functional code.",
   openGraph: {
     title: "Ricky Ransom | RKYRNSM",
     description:
-    "Full-Stack Developer, Entrepreneur & Keynote Speaker. The Road to $1M.",
+    "Full-Stack Developer, Entrepreneur & Keynote Speaker. The Road to Success.",
     type: "website",
   },
 };

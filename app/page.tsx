@@ -19,7 +19,7 @@ export default function Home() {
           </h2>
           <p className="text-lg text-muted leading-relaxed mb-10 max-w-xl mx-auto">
             Whether you need a keynote, architectural consulting, or a full-stack build —
-            the Road to $1M starts with a conversation.
+            the Road to Success starts with a conversation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

@@ -21,7 +21,7 @@ const slides: Slide[] = [
     icon: <Mic size={24} />,
     iconBg: 'from-accent to-accent/50',
     title: 'Keynote Speaking',
-    subtitle: 'The "Road to $1M" Mindset',
+    subtitle: 'The "Road to Success" Mindset',
     description:
       'From bootstrapped startup to multi-venture agency owner. I deliver high-energy keynotes on the intersection of engineering discipline, entrepreneurial grit, and cultural relevance.',
     topics: ['The Hunter Mentality', 'Zero-to-Revenue Engineering', 'Building in Public'],
