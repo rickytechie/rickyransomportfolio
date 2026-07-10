@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, ArrowRight, Mic, Building, Lightbulb, Star } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ArrowRight, ShoppingBag, Glasses, Megaphone, Database, Star } from 'lucide-react'
 
 interface Slide {
   id: string
@@ -17,37 +17,48 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    id: 'keynote',
-    icon: <Mic size={24} />,
-    iconBg: 'from-accent to-accent/50',
-    title: 'Keynote Speaking',
-    subtitle: 'The "Road to Success" Mindset',
-    description:
-      'From bootstrapped startup to multi-venture agency owner. I deliver high-energy keynotes on the intersection of engineering discipline, entrepreneurial grit, and cultural relevance.',
-    topics: ['The Hunter Mentality', 'Zero-to-Revenue Engineering', 'Building in Public'],
-    highlight: '50+ keynotes delivered across 3 continents',
-  },
-  {
-    id: 'consulting',
-    icon: <Building size={24} />,
+    id: 'nouvintage',
+    icon: <ShoppingBag size={24} />,
     iconBg: 'from-accent-alt to-accent-alt/50',
-    title: 'Technical Consulting',
-    subtitle: 'Full-Stack Architecture & Strategy',
+    title: 'NOUVINTAGE',
+    subtitle: 'Curated Resale, Engineered for Scale',
     description:
-      'Hands-on consulting for teams that need to move faster. I help startups and agencies design scalable architectures, optimize conversion flows, and ship production-grade products.',
-    topics: ['System Architecture', 'Codebase Audits', 'Growth Engineering'],
-    highlight: '$2.4M+ in client revenue accelerated',
+      'Architected and deployed a high-end vintage marketplace from the ground up — blending editorial curation with robust e-commerce architecture. Automated listing pipelines, headless CMS architecture, and a checkout flow optimized for conversion at every touchpoint. Scaled inventory from zero to thousands of SKUs with zero-touch listing automation.',
+    topics: ['Headless Commerce', 'Sanity CMS', 'Stripe Integration', 'Conversion Architecture'],
+    highlight: '5K+ inventory items · 4.2% conversion rate · Zero-touch listings',
   },
   {
-    id: 'workshop',
-    icon: <Lightbulb size={24} />,
-    iconBg: 'from-neon to-neon/50',
-    title: 'Workshops & Masterclasses',
-    subtitle: 'Engineering the Full Stack',
+    id: 'jimmy-swagg',
+    icon: <Glasses size={24} />,
+    iconBg: 'from-accent to-accent/50',
+    title: 'Jimmy Swagg Eyewear',
+    subtitle: 'Seed to Multi-Million',
     description:
-      'Intensive sessions covering modern full-stack development — from Next.js to deployment pipelines. Built for dev teams that want to level up their craft and output.',
-    topics: ['Next.js & React Deep Dive', 'CI/CD & DevEx', 'Product Engineering'],
-    highlight: '1,000+ engineers trained worldwide',
+      'Took an eyewear concept from seed-stage idea to multi-revenue-stream operation. Built the full digital infrastructure — e-commerce platform, inventory management, CRM integration, and customer acquisition funnels. Implemented ERP protocols for supply chain tracking, order fulfillment, and financial reconciliation across wholesale and direct-to-consumer channels.',
+    topics: ['E-Commerce Infrastructure', 'ERP Protocol Implementation', 'Supply Chain Automation', 'Multi-Channel Sales'],
+    highlight: 'Seed to multi-million · ERP integration · DTC + wholesale channels',
+  },
+  {
+    id: 'marketing-engine',
+    icon: <Megaphone size={24} />,
+    iconBg: 'from-neon to-neon/50',
+    title: 'Digital & Event Marketing',
+    subtitle: 'Full-Funnel Marketing Engine',
+    description:
+      'Designed and executed integrated marketing campaigns spanning digital, social, and live events. Built automated marketing funnels, email sequences, and retargeting systems that turned event attendance into long-term customer relationships. Scaled event marketing operations from single-city activations to multi-region campaigns.',
+    topics: ['Event Marketing Automation', 'Multi-Channel Campaigns', 'Retargeting Systems', 'ROI Attribution'],
+    highlight: 'Multi-region campaigns · Automated funnel architecture · Measurable ROI',
+  },
+  {
+    id: 'erp-architecture',
+    icon: <Database size={24} />,
+    iconBg: 'from-accent-alt to-neon/50',
+    title: 'ERP & Full-Stack Architecture',
+    subtitle: 'Enterprise Protocols, Startup Speed',
+    description:
+      'Implemented enterprise-grade ERP protocols across operations — inventory management, order processing, financial reporting, and vendor management. Built custom full-stack solutions integrating ERPs with front-end customer experiences, ensuring real-time data flow from warehouse to checkout. Architecture built to scale from single-location to multi-warehouse operations.',
+    topics: ['ERP Systems Integration', 'Full-Stack Architecture', 'Real-Time Data Pipelines', 'Scalable Infrastructure'],
+    highlight: 'Enterprise ERP · Custom full-stack integration · Multi-warehouse ready',
   },
 ]
 
@@ -64,7 +75,7 @@ export default function PitchDeck() {
   }, [])
 
   useEffect(() => {
-    const timer = setInterval(() => paginate(1), 5500)
+    const timer = setInterval(() => paginate(1), 6000)
     return () => clearInterval(timer)
   }, [paginate])
 
@@ -90,7 +101,7 @@ export default function PitchDeck() {
           className="mb-16"
         >
           <span className="text-xs font-mono tracking-[0.3em] uppercase text-accent mb-4 block">
-            Speaker & Consultancy
+            Ventures & Track Record
           </span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-sand">
             Pitch Deck
