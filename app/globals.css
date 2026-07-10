@@ -6,6 +6,7 @@
   --color-muted: #78716c;
   --color-accent: #ff2d78;
   --color-accent-alt: #00f0ff;
+  --color-neon: #39ff14;
   --color-concrete: #e7e5e4;
   --color-concrete-dark: #a8a29e;
   --color-stone-950: #0c0c0c;
@@ -27,4 +28,39 @@ html {
 body {
   background: var(--color-sand);
   color: var(--color-foreground);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px color-mix(in srgb, var(--color-accent) 30%, transparent); }
+  50% { box-shadow: 0 0 20px color-mix(in srgb, var(--color-accent) 60%, transparent); }
+}
+
+.terminal-scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-accent-alt) 10%, transparent), transparent);
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.glow-accent {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
