@@ -6,6 +6,8 @@ export interface DossierSlide {
   competencies?: string[]
   metrics?: { label: string; value: string }[]
   tags?: string[]
+  imageUrl: string
+  imageQuery: string
 }
 
 export const dossierSlides: DossierSlide[] = [
@@ -27,6 +29,8 @@ export const dossierSlides: DossierSlide[] = [
       'Systems Design',
     ],
     tags: ['20+ Years Experience', 'Seed-to-Scale', 'Hunter Mentality'],
+    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=800&fit=crop&q=80',
+    imageQuery: 'technology,network,abstract',
   },
   {
     id: 'scaling-success',
@@ -44,6 +48,8 @@ export const dossierSlides: DossierSlide[] = [
       { label: 'Channels Built', value: 'DTC + Wholesale' },
     ],
     tags: ['E-Commerce', 'ERP', 'Marketing Automation', 'Multi-Channel'],
+    imageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop&q=80',
+    imageQuery: 'architecture,growth,urban',
   },
   {
     id: 'technical-stack',
@@ -63,17 +69,21 @@ export const dossierSlides: DossierSlide[] = [
       'Solidity / Web3 / Blockchain',
     ],
     tags: ['Full-Stack', 'AI/ML', 'Web3', 'Cloud Infrastructure'],
+    imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=800&fit=crop&q=80',
+    imageQuery: 'server,infrastructure,code',
   },
   {
     id: 'vision-synthesis',
     title: 'Vision & Synthesis',
     subtitle: 'From Medical Journey to Culture/Code Mastery',
     content: [
-      'I was born with Hirschsprung disease — a congenital condition that claimed most of my large intestine and led to Short Bowel Syndrome. Ten-plus surgeries, months of hospitalization, and an Enterocutaneous Fistula (ECF) that nearly ended my journey. But every scar became a lesson in systems thinking, resilience, and the architecture of survival.',
+      'I was born with Hirschsprung disease — a congenital condition that claimed most of my large intestine and led to Short Bowel Syndrome. 70+ surgical procedures, years of hospitalization, and an Enterocutaneous Fistula (ECF) that nearly ended my journey. But every scar became a lesson in systems thinking, resilience, and the architecture of survival.',
       'Before tech, there was medicine — a residency track at Weill Cornell that taught me precision under pressure. Before code, there was linguistics — five languages that gave me a deep understanding of structure, syntax, and meaning. Before engineering, there was music — composition and performance that taught me the art of flow.',
       'The RKYRNSM Digital Engine is the synthesis of all of it. I build for founders who have been counted out. I architect for teams underestimated by the market. I speak for audiences that need to hear that their obstacles are not roadblocks — they are raw materials for something greater.',
       'This is not just a portfolio. It is a living thesis: adversity plus architecture equals advantage. Let us build.',
     ],
     tags: ['Resilience', 'Synthesis', 'Vision', 'The Road to Success'],
+    imageUrl: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&h=800&fit=crop&q=80',
+    imageQuery: 'ocean,coastal,resilience',
   },
 ]

@@ -11,8 +11,8 @@ export const bioSections: BioSection[] = [
     title: 'The Foundation',
     content: [
       'Before the code, before the architecture, before the keynotes — there was a body that refused to cooperate. Born with Hirschsprung disease, a congenital condition that claimed most of my large intestine, I entered the world already fighting. The diagnosis led to Short Bowel Syndrome, a lifelong battle with absorption, nutrition, and the fundamental mechanics of survival.',
-      'While other kids ran and played without a second thought, I learned to read my body like a dashboard — monitoring inputs, outputs, energy reserves, and warning lights. The hospital became a second home. The white walls of recovery rooms became my first classrooms in patience, resilience, and the art of fighting for tomorrow.',
-      'By the time I reached my teenage years, I had undergone more surgeries than most people endure in a lifetime. But each procedure, each setback, each moment the doctors said "maybe" and I decided "definitely" — they forged something in me that no scalpel could remove: an unrelenting will to architect a life worth living.',
+      '70+ surgical procedures. Years of hospitalization. An Enterocutaneous Fistula (ECF) that nearly ended my journey. While other kids ran and played without a second thought, I learned to read my body like a dashboard — monitoring inputs, outputs, energy reserves, and warning lights. The hospital became a second home. The white walls of recovery rooms became my first classrooms in patience, resilience, and the art of fighting for tomorrow.',
+      'Each procedure, each setback, each moment the doctors said "maybe" and I decided "definitely" — they forged something in me that no scalpel could remove: an unrelenting will to architect a life worth living.',
     ],
   },
   {
@@ -58,7 +58,7 @@ export const bioSections: BioSection[] = [
 
 export const bioHighlights = [
   { label: 'Languages Spoken', value: '5' },
-  { label: 'Surgical Recoveries', value: '10+' },
+  { label: 'Surgical Procedures', value: '70+' },
   { label: 'Years in Tech', value: '8+' },
   { label: 'Ventures Built', value: '5+' },
 ]

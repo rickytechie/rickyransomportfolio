@@ -1,9 +1,11 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Target, TrendingUp, Cpu, Eye } from 'lucide-react'
+import { Target, TrendingUp, Cpu, Eye } from 'lucide-react'
+import Image from 'next/image'
 import { dossierSlides } from '@/lib/dossier-data'
+import PresentationControls from '@/components/PresentationControls'
 
 const iconMap: Record<string, React.ReactNode> = {
   'executive-summary': <Target size={24} />,
@@ -11,6 +13,8 @@ const iconMap: Record<string, React.ReactNode> = {
   'technical-stack': <Cpu size={24} />,
   'vision-synthesis': <Eye size={24} />,
 }
+
+const SLIDE_INTERVAL = 5000
 
 const slideVariants = {
   enter: (dir: number) => ({ x: dir > 0 ? 500 : -500, opacity: 0, rotateY: dir > 0 ? 5 : -5 }),
@@ -20,7 +24,16 @@ const slideVariants = {
 
 export default function DossierPage() {
   const [[current, direction], setCurrent] = useState([0, 0])
+  const [isPlaying, setIsPlaying] = useState(true)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const slide = dossierSlides[Math.abs(current) % dossierSlides.length]
+
+  const clearTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current)
+      timerRef.current = null
+    }
+  }, [])
 
   const paginate = useCallback((dir: number) => {
     setCurrent(([prev]) => {
@@ -31,10 +44,33 @@ export default function DossierPage() {
     })
   }, [])
 
+  const goTo = useCallback((index: number) => {
+    setCurrent(([prev]) => {
+      const dir = index > prev ? 1 : -1
+      return [index, dir]
+    })
+  }, [])
+
+  const handlePlay = useCallback(() => {
+    setIsPlaying(true)
+  }, [])
+
+  const handlePause = useCallback(() => {
+    setIsPlaying(false)
+  }, [])
+
+  const handleStop = useCallback(() => {
+    setIsPlaying(false)
+    setCurrent(([prev]) => [0, prev === 0 ? 1 : -1])
+  }, [])
+
   useEffect(() => {
-    const timer = setInterval(() => paginate(1), 7000)
-    return () => clearInterval(timer)
-  }, [paginate])
+    clearTimer()
+    if (isPlaying) {
+      timerRef.current = setInterval(() => paginate(1), SLIDE_INTERVAL)
+    }
+    return clearTimer
+  }, [isPlaying, paginate, clearTimer])
 
   return (
     <div className="min-h-screen bg-stone-950">
@@ -66,28 +102,21 @@ export default function DossierPage() {
             </h1>
             <p className="text-lg text-concrete-dark/70 leading-relaxed max-w-2xl">
               An executive-level synthesis of capability, track record, and vision.
-              Navigate through the slides below.
+              Use the controls below to navigate through each slide.
             </p>
           </motion.div>
 
-          <div className="flex items-center gap-3 mb-8">
-            {dossierSlides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  const dir = i > current ? 1 : -1
-                  setCurrent([i, dir])
-                }}
-                className={`h-[3px] transition-all duration-500 ${
-                  i === current ? 'w-12 bg-accent-alt' : 'w-6 bg-concrete-dark/20 hover:bg-concrete-dark/40'
-                }`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-            <span className="ml-auto text-[10px] font-mono tracking-[0.3em] text-concrete-dark">
-              {String(current + 1).padStart(2, '0')} / {String(dossierSlides.length).padStart(2, '0')}
-            </span>
-          </div>
+          <PresentationControls
+            isPlaying={isPlaying}
+            currentSlide={current}
+            totalSlides={dossierSlides.length}
+            onPlay={handlePlay}
+            onPause={handlePause}
+            onStop={handleStop}
+            onBack={() => paginate(-1)}
+            onForward={() => paginate(1)}
+            onGoTo={goTo}
+          />
         </div>
       </section>
 
@@ -153,62 +182,59 @@ export default function DossierPage() {
                     )}
                   </div>
 
-                  <div className="lg:col-span-2 border-t lg:border-t-0 lg:border-l border-stone-800 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-stone-950/50">
-                    {slide.competencies && (
-                      <div>
-                        <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-accent mb-6 block">
-                          Core Competencies
-                        </span>
-                        <div className="space-y-3">
-                          {slide.competencies.map((comp) => (
-                            <div key={comp} className="flex items-center gap-3">
-                              <span className="w-1.5 h-1.5 rounded-full bg-accent-alt shrink-0" />
-                              <span className="text-sm font-mono text-sand">{comp}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                  <div className="lg:col-span-2 border-t lg:border-t-0 lg:border-l border-stone-800 flex flex-col bg-stone-950/50">
+                    <div className="relative h-48 lg:h-64 overflow-hidden">
+                      <Image
+                        src={slide.imageUrl}
+                        alt={slide.title}
+                        fill
+                        className="object-cover opacity-60"
+                        sizes="(max-width: 1024px) 100vw, 40vw"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-stone-950/20 to-stone-950" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-stone-950/40 hidden lg:block" />
+                    </div>
 
-                    {slide.metrics && (
-                      <div className="mt-auto pt-8">
-                        <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-accent mb-6 block">
-                          Key Metrics
-                        </span>
-                        <div className="grid grid-cols-2 gap-6">
-                          {slide.metrics.map((m) => (
-                            <div key={m.label}>
-                              <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-accent-alt to-neon bg-clip-text text-transparent block leading-none">
-                                {m.value}
-                              </span>
-                              <span className="text-[10px] font-mono text-concrete-dark mt-1 block">
-                                {m.label}
-                              </span>
-                            </div>
-                          ))}
+                    <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center flex-1">
+                      {slide.competencies && (
+                        <div>
+                          <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-accent mb-6 block">
+                            Core Competencies
+                          </span>
+                          <div className="space-y-3">
+                            {slide.competencies.map((comp) => (
+                              <div key={comp} className="flex items-center gap-3">
+                                <span className="w-1.5 h-1.5 rounded-full bg-accent-alt shrink-0" />
+                                <span className="text-sm font-mono text-sand">{comp}</span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+
+                      {slide.metrics && (
+                        <div className="mt-8 pt-8 border-t border-stone-800">
+                          <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-accent mb-6 block">
+                            Key Metrics
+                          </span>
+                          <div className="grid grid-cols-2 gap-6">
+                            {slide.metrics.map((m) => (
+                              <div key={m.label}>
+                                <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-accent-alt to-neon bg-clip-text text-transparent block leading-none">
+                                  {m.value}
+                                </span>
+                                <span className="text-[10px] font-mono text-concrete-dark mt-1 block">
+                                  {m.label}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex items-center justify-between mt-8">
-                <button
-                  onClick={() => paginate(-1)}
-                  className="flex items-center gap-2 px-6 py-3 border border-concrete-dark/20 text-concrete-dark hover:border-accent-alt hover:text-accent-alt transition-all duration-300 text-xs font-mono uppercase tracking-widest"
-                >
-                  <ChevronLeft size={14} /> Previous
-                </button>
-                <span className="text-[10px] font-mono text-concrete-dark/40">
-                  Slide {current + 1} of {dossierSlides.length}
-                </span>
-                <button
-                  onClick={() => paginate(1)}
-                  className="flex items-center gap-2 px-6 py-3 border border-concrete-dark/20 text-concrete-dark hover:border-accent-alt hover:text-accent-alt transition-all duration-300 text-xs font-mono uppercase tracking-widest"
-                >
-                  Next <ChevronRight size={14} />
-                </button>
               </div>
             </motion.div>
           </AnimatePresence>
