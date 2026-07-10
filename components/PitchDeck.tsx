@@ -139,7 +139,7 @@ export default function PitchDeck() {
                     ))}
                   </div>
                   <a
-                    href="#"
+                    href="mailto:RICKYRANSOMCOMPANY@GMAIL.COM"
                     className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-accent text-accent font-semibold text-sm uppercase tracking-widest hover:bg-accent hover:text-stone-950 transition-all duration-300"
                   >
                     Book Ricky

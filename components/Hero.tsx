@@ -136,9 +136,12 @@ export default function Hero() {
               and success consultant, I empower teams, startups, and entrepreneurs to reach their next
               level of peak performance.
             </p>
-            <p className="text-base text-concrete-dark/70 leading-relaxed mb-12">
+            <p className="text-base text-concrete-dark/70 leading-relaxed mb-3">
               Through a curated medley of systems, AI-driven architectures, and high-impact resources,
               I help the next generation of thinkers and doers build, scale, and sustain success.
+            </p>
+            <p className="text-sm text-accent-alt/80 font-mono leading-relaxed mb-12">
+              Multi-lingual keynotes delivered worldwide to inspire, engage, and empower teams around the world.
             </p>
           </motion.div>
 
