@@ -78,7 +78,7 @@ export const dossierSlides: DossierSlide[] = [
     subtitle: 'Patient Residency · Culture/Code Mastery · The Road to Success',
     content: [
       'I did not walk the halls of Weill Cornell as a doctor, but as a long-term patient — a residency of necessity, not choice. I spent years navigating the landscape of trauma, undergoing 70+ major procedures, including 33 specialized UVEC stem cell surgeries on top of 38 prior life-saving interventions. This was my proving ground — not a classroom, but the front lines of human survival.',
-      'The resilience I forged there, and the deep understanding of complex biological systems, became the foundation for my approach to systems architecture, software engineering, and product building. Before code, there was linguistics — five languages that gave me a deep understanding of structure, syntax, and meaning. Before engineering, there was music — composition and performance that taught me the art of flow.',
+      'The resilience I forged there, and the deep understanding of complex biological systems, became the foundation for my approach to systems architecture, software engineering, and product building. Before code, there was linguistics — four languages plus working knowledge of others that gave me a deep understanding of structure, syntax, and meaning. Before engineering, there was music — composition and performance that taught me the art of flow.',
       'The RKYRNSM Digital Engine is the synthesis of all of it. I build for founders who have been counted out. I architect for teams underestimated by the market. I speak for audiences that need to hear that their obstacles are not roadblocks — they are raw materials for something greater.',
       'This is not just a portfolio. It is a living thesis: adversity plus architecture equals advantage. Let us build.',
     ],
@@ -94,7 +94,7 @@ export const dossierSlides: DossierSlide[] = [
       { label: 'Major Procedures', value: '70+' },
       { label: 'UVEC Surgeries', value: '33' },
       { label: 'Prior Interventions', value: '38' },
-      { label: 'Languages Spoken', value: '5' },
+      { label: 'Languages Spoken', value: '4+' },
     ],
     tags: ['Resilience', 'Synthesis', 'Vision', 'The Road to Success'],
     imageUrl: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&h=800&fit=crop&q=80',
