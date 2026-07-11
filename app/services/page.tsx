@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Cpu, Briefcase, TrendingUp, ExternalLink, Sparkles, Star } from 'lucide-react'
 import {
@@ -50,51 +51,55 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative border-2 border-stone-950 bg-white p-6 sm:p-8 flex flex-col hover:border-accent-alt transition-all duration-300"
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${style.glow} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center justify-between mb-5">
-          <span className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-concrete-dark">
-            {iconMap[categories.find((c) => c.id === service.category)?.icon || 'Cpu']}
-            {categories.find((c) => c.id === service.category)?.label}
-          </span>
-          <span className="text-[10px] font-mono text-concrete-dark/40">
-            {String(index + 1).padStart(2, '0')}
-          </span>
+      <Link
+        href={`/services/${service.slug}`}
+        className="group relative border-2 border-stone-950 bg-white p-6 sm:p-8 flex flex-col hover:border-accent-alt transition-all duration-300 h-full"
+      >
+        <div className={`absolute inset-0 bg-gradient-to-br ${style.glow} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+        <div className="relative z-10 flex flex-col h-full">
+          <div className="flex items-center justify-between mb-5">
+            <span className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-concrete-dark">
+              {iconMap[categories.find((c) => c.id === service.category)?.icon || 'Cpu']}
+              {categories.find((c) => c.id === service.category)?.label}
+            </span>
+            <span className="text-[10px] font-mono text-concrete-dark/40">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+          </div>
+
+          {service.pricingTier === 'executive' && (
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-3">
+              <Star size={10} className="fill-accent" />
+              Executive Tier
+            </span>
+          )}
+
+          <h3 className="text-lg sm:text-xl font-bold tracking-tight text-stone-950 mb-3 group-hover:text-accent-alt transition-colors duration-300">
+            {service.title}
+          </h3>
+
+          <p className="text-sm text-muted leading-relaxed mb-6 flex-1">
+            {service.description}
+          </p>
+
+          <ul className="space-y-1.5 mb-6">
+            {service.features.map((feature) => (
+              <li key={feature} className="flex items-start gap-2 text-xs text-concrete-dark">
+                <span className="mt-1.5 w-1 h-1 rounded-full bg-accent-alt shrink-0" />
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex items-center justify-between pt-5 border-t border-concrete mt-auto">
+            <PricingBadge tier={service.pricingTier} price={service.price} />
+            <span className="flex items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-stone-950 group-hover:text-accent-alt transition-colors">
+              View Details <ExternalLink size={12} />
+            </span>
+          </div>
         </div>
-
-        {service.pricingTier === 'executive' && (
-          <span className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-3">
-            <Star size={10} className="fill-accent" />
-            Executive Tier
-          </span>
-        )}
-
-        <h3 className="text-lg sm:text-xl font-bold tracking-tight text-stone-950 mb-3 group-hover:text-accent-alt transition-colors duration-300">
-          {service.title}
-        </h3>
-
-        <p className="text-sm text-muted leading-relaxed mb-6 flex-1">
-          {service.description}
-        </p>
-
-        <ul className="space-y-1.5 mb-6">
-          {service.features.map((feature) => (
-            <li key={feature} className="flex items-start gap-2 text-xs text-concrete-dark">
-              <span className="mt-1.5 w-1 h-1 rounded-full bg-accent-alt shrink-0" />
-              {feature}
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex items-center justify-between pt-5 border-t border-concrete mt-auto">
-          <PricingBadge tier={service.pricingTier} price={service.price} />
-          <span className="flex items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-stone-950 group-hover:text-accent-alt transition-colors">
-            Learn More <ExternalLink size={12} />
-          </span>
-        </div>
-      </div>
+      </Link>
     </motion.div>
   )
 }

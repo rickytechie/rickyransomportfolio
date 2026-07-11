@@ -126,7 +126,7 @@ export default function BioPage() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="text-lg text-concrete-dark/70 leading-relaxed max-w-2xl"
           >
-            From Hirschsprung survivor to Weill Cornell resident, from linguistic polyglot to full-stack
+            From Hirschsprung survivor to 70+ surgical procedures, from linguistic polyglot to full-stack
             architect — every line of code I write carries the weight of a body that refused to break
             and a mind that refused to stop learning.
           </motion.p>

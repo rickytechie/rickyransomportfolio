@@ -17,11 +17,11 @@ export const bioSections: BioSection[] = [
   },
   {
     id: 'medicine',
-    title: 'The White Coat Years',
+    title: 'The Patient Residency',
     content: [
-      'After years as a patient, I decided to step to the other side of the stethoscope. I pursued a residency track at Weill Cornell Medicine, one of the most prestigious medical institutions in the world. The same halls where Nobel laureates walked became my proving ground.',
-      'The irony was not lost on me — a body that medicine had saved was now dedicating itself to medicine\'s calling. I immersed myself in the science of healing, studying the systems that had kept me alive and learning to apply that knowledge in service of others.',
-      'But even as I excelled in the clinical environment, I felt something pulling me in a different direction. The same analytical mind that could diagnose a patient could also debug a distributed system. The same precision required for a surgical procedure translated naturally to crafting elegant software architecture. The same empathy that made a good physician made a great product builder.',
+      'I did not walk the halls of Weill Cornell as a doctor, but as a long-term patient — a residency of necessity, not choice. I spent years navigating the landscape of trauma, undergoing 70+ major procedures, including 33 specialized UVEC stem cell surgeries on top of 38 prior life-saving interventions. This was my proving ground — not a classroom, but the front lines of human survival.',
+      'The resilience I forged there, and the deep understanding of complex biological systems, became the foundation for my approach to systems architecture, software engineering, and product building. While other students studied anatomy from textbooks, I studied it from the inside — monitoring inputs, outputs, energy reserves, and warning lights. The hospital became my first laboratory in systems thinking.',
+      'Every scar became a lesson. Every procedure became a data point. Every recovery became proof that the human body — like any complex system — can be debugged, optimized, and made to perform beyond its original specifications. The same analytical mind that tracked my own vitals could debug a distributed system. The same precision that guided surgeons translated naturally to crafting elegant software architecture.',
     ],
   },
   {
